@@ -1,0 +1,145 @@
+<!DOCTYPE html> <!-- Document type declaration for HTML5 -->
+<html lang="en"> <!-- Root HTML element with English language attribute -->
+
+<head> <!-- Head element containing metadata and external links -->
+    <meta charset="UTF-8"> <!-- Set character encoding to UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport meta tag for responsive design -->
+    <title>Ultimate Weather Experience</title> <!-- Set the page title displayed in the browser tab -->
+    <!-- Google Fonts --> <!-- Comment indicating the start of Google Fonts imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Preconnect to Google Fonts domain for performance -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Preconnect to Google Fonts static domain with CORS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"> <!-- Import Poppins font family with multiple weights -->
+    <!-- FontAwesome for icons --> <!-- Comment indicating the start of FontAwesome import -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Import FontAwesome CSS for icons -->
+    <!-- Custom CSS --> <!-- Comment indicating the import of the local stylesheet -->
+    <link rel="stylesheet" href="style.css"> <!-- Import external stylesheet style.css -->
+</head> <!-- Close head element -->
+
+<body> <!-- Body element containing the visible content of the page -->
+    <!-- Dynamic Background Image Layer --> <!-- Comment for dynamic background element -->
+    <div class="bg-image" id="bg-image"></div> <!-- Div for displaying dynamic background image -->
+    <!-- Dark overlay to ensure text is always readable --> <!-- Comment for background overlay element -->
+    <div class="bg-overlay"></div> <!-- Div for the dark overlay to improve text readability -->
+    <!-- Blank line for spacing -->
+    <div class="app-container"> <!-- Main container for the application layout -->
+        <!-- Professional Top Bar --> <!-- Comment for the top navigation bar -->
+        <header class="top-bar"> <!-- Header element for the top bar -->
+            <div class="brand"> <!-- Container for the brand logo and name -->
+                <i class="fas fa-meteor"></i> SkyCast <!-- Brand icon (meteor) and text (SkyCast) -->
+            </div> <!-- Close brand container -->
+            <!-- Blank line for spacing -->
+            <div class="search-container big-search"> <!-- Container for the search input and button -->
+                <i class="fas fa-search search-icon-left"></i> <!-- Search icon positioned inside the input field -->
+                <input type="text" id="search-input" placeholder="Search for cities, places...">
+                <!-- Text input for searching cities -->
+                <button id="search-btn">Search</button> <!-- Search button to trigger weather fetch -->
+            </div> <!-- Close search container -->
+            <!-- Blank line for spacing -->
+            <div class="top-actions"> <!-- Container for top action buttons -->
+                <button class="icon-btn" id="notification-btn" title="Enable Notifications"><i
+                        class="fas fa-bell"></i></button> <!-- Button to enable desktop notifications -->
+            </div> <!-- Close top actions container -->
+        </header> <!-- Close top bar header -->
+        <!-- Blank line for spacing -->
+        <div class="dashboard-content"> <!-- Container for the main dashboard content -->
+            <!-- Left Section: Main Weather Hero --> <!-- Comment for the main weather display section -->
+            <main class="main-weather"> <!-- Main element for the primary weather info -->
+                <div class="weather-hero hidden" id="hero-content">
+                    <!-- Container for the active weather data, hidden by default -->
+                    <div class="hero-temp"> <!-- Container for temperature and city details -->
+                        <h1 id="temperature">16°</h1> <!-- Heading for the current temperature -->
+                        <div class="hero-city"> <!-- Container for city name and current date -->
+                            <h2 id="city-name">London</h2> <!-- Heading for the city name -->
+                            <p id="current-date">09:41 - Monday, 28 Apr</p>
+                            <!-- Paragraph for the current local time and date -->
+                        </div> <!-- Close hero-city container -->
+                    </div> <!-- Close hero-temp container -->
+                    <div class="hero-condition"> <!-- Container for weather condition icon and text -->
+                        <img id="weather-icon" src="" alt="icon"> <!-- Image element for the weather condition icon -->
+                        <span id="condition">Sunny</span> <!-- Span element for the weather condition text -->
+                    </div> <!-- Close hero-condition container -->
+                </div> <!-- Close weather-hero container -->
+                <!-- Blank line for spacing -->
+                <div class="hero-empty" id="hero-empty"> <!-- Container for the empty state before searching -->
+                    <div class="empty-state-icon"> <!-- Container for the empty state icon -->
+                        <i class="fas fa-globe-americas"></i> <!-- Globe icon for the empty state -->
+                    </div> <!-- Close empty-state-icon container -->
+                    <h1>Global Weather</h1> <!-- Heading for the empty state -->
+                    <p>Enter a city name above to get real-time forecasts and conditions.</p>
+                    <!-- Instructional text for the user -->
+                </div> <!-- Close hero-empty container -->
+            </main> <!-- Close main weather section -->
+            <!-- Blank line for spacing -->
+            <!-- Right Section: Frosted Glass Sidebar --> <!-- Comment for the right sidebar section -->
+            <aside class="sidebar glass hidden" id="sidebar"> <!-- Aside element for the sidebar, initially hidden -->
+                <div id="sidebar-content" class="hidden"> <!-- Container for the sidebar content, initially hidden -->
+                    <div class="sidebar-section"> <!-- Section for weather details -->
+                        <h3>Weather Details</h3> <!-- Heading for the weather details section -->
+                        <div class="details-grid"> <!-- Grid container for weather detail items -->
+                            <div class="detail-box"> <!-- Container for a single weather detail (Feels Like) -->
+                                <div class="label-row"> <!-- Container for the detail label and icon -->
+                                    <i class="fas fa-temperature-half"></i> <!-- Icon for temperature/feels like -->
+                                    <span class="label">Feels Like</span> <!-- Label text for 'Feels Like' -->
+                                </div> <!-- Close label-row -->
+                                <span class="value" id="feels-like">18°</span>
+                                <!-- Value for 'Feels Like' temperature -->
+                            </div> <!-- Close detail-box -->
+                            <div class="detail-box"> <!-- Container for a single weather detail (Humidity) -->
+                                <div class="label-row"> <!-- Container for the detail label and icon -->
+                                    <i class="fas fa-droplet"></i> <!-- Icon for humidity -->
+                                    <span class="label">Humidity</span> <!-- Label text for 'Humidity' -->
+                                </div> <!-- Close label-row -->
+                                <span class="value" id="humidity">45%</span> <!-- Value for 'Humidity' percentage -->
+                            </div> <!-- Close detail-box -->
+                            <div class="detail-box"> <!-- Container for a single weather detail (Wind) -->
+                                <div class="label-row"> <!-- Container for the detail label and icon -->
+                                    <i class="fas fa-wind"></i> <!-- Icon for wind -->
+                                    <span class="label">Wind</span> <!-- Label text for 'Wind' -->
+                                </div> <!-- Close label-row -->
+                                <span class="value" id="wind">12 km/h</span> <!-- Value for 'Wind' speed -->
+                            </div> <!-- Close detail-box -->
+                            <div class="detail-box"> <!-- Container for a single weather detail (Visibility) -->
+                                <div class="label-row"> <!-- Container for the detail label and icon -->
+                                    <i class="fas fa-eye"></i> <!-- Icon for visibility -->
+                                    <span class="label">Visibility</span> <!-- Label text for 'Visibility' -->
+                                </div> <!-- Close label-row -->
+                                <span class="value" id="visibility">10 km</span>
+                                <!-- Value for 'Visibility' distance -->
+                            </div> <!-- Close detail-box -->
+                        </div> <!-- Close details-grid -->
+                    </div> <!-- Close sidebar-section for details -->
+                    <!-- Blank line for spacing -->
+                    <div class="sidebar-section"> <!-- Section for upcoming forecast -->
+                        <h3>Upcoming Forecast</h3> <!-- Heading for the upcoming forecast section -->
+                        <div class="forecast-list" id="forecast-container">
+                            <!-- Container for the list of forecast items -->
+                            <!-- Forecast items injected via JS -->
+                            <!-- Comment indicating that JS will populate this -->
+                        </div> <!-- Close forecast-list container -->
+                    </div> <!-- Close sidebar-section for forecast -->
+                </div> <!-- Close sidebar-content -->
+                <!-- Blank line for spacing -->
+                <div id="sidebar-loading" class="sidebar-message hidden">
+                    <!-- Container for the loading spinner, initially hidden -->
+                    <div class="spinner"></div> <!-- Div representing the loading spinner animation -->
+                </div> <!-- Close sidebar-loading container -->
+                <!-- Blank line for spacing -->
+                <div id="sidebar-error" class="sidebar-message hidden">
+                    <!-- Container for the error message, initially hidden -->
+                    <i class="fas fa-exclamation-circle error-icon"></i> <!-- Icon for the error state -->
+                    <p id="error-message">City not found.</p> <!-- Text paragraph for the specific error message -->
+                </div> <!-- Close sidebar-error container -->
+            </aside> <!-- Close sidebar aside element -->
+        </div> <!-- End Dashboard Content --> <!-- Close dashboard-content container -->
+    </div> <!-- Close app-container -->
+    <!-- Blank line for spacing -->
+    <!-- Custom JavaScript --> <!-- Comment indicating the import of local JavaScript -->
+    <script src="app.js"></script> <!-- Import external JavaScript file app.js -->
+</body> <!-- Close body element -->
+
+</html> <!-- Close html document -->
