@@ -1,0 +1,1 @@
+import"./rolldown-runtime-BYbx6iT9.js";import{Gt as e}from"./vendor-Bq-aFvza.js";import{r as t}from"./vendor-animations-C_XWX-Y_.js";import{n}from"./ProductCard-gBfEjoue.js";e();var r=t(),i=({className:e,...t})=>(0,r.jsx)(`div`,{className:n(`animate-pulse bg-gray-200 rounded-md`,e),...t});export{i as t};
