@@ -1,0 +1,64 @@
+{
+  "info": {
+    "name": "Blog Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Posts",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/posts?pageNo=0&pageSize=5",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "posts"
+          ],
+          "query": [
+            {
+              "key": "pageNo",
+              "value": "0"
+            },
+            {
+              "key": "pageSize",
+              "value": "5"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"New API Design\",\n    \"content\": \"This is a detailed post about API design...\",\n    \"author\": \"Alice\",\n    \"categoryId\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/posts",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "posts"
+          ]
+        }
+      }
+    }
+  ]
+}
